@@ -3,7 +3,7 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(BASE_DIR))
-sys.path.append(os.path.join(BASE_DIR,'contact_graspnet'))
+sys.path.append(os.path.join(BASE_DIR,'contact_graspnet_model'))
 sys.path.append(os.path.join(BASE_DIR, 'pointnet2',  'tf_ops/grouping'))
 sys.path.append(os.path.join(BASE_DIR, 'pointnet2',  'utils'))
 
@@ -17,7 +17,6 @@ import trimesh.transformations as tra
 from scipy.spatial import cKDTree
 
 import provider
-from scene_renderer import SceneRenderer
 
 def load_scene_contacts(dataset_folder, test_split_only=False, num_test=None, scene_contacts_path='scene_contacts_new'):
     """
@@ -466,6 +465,7 @@ class PointCloudReader:
         self._current_pc = None
         self._cache = {}
 
+        from contact_graspnet.scene_renderer import SceneRenderer
         self._renderer = SceneRenderer(caching=True, intrinsics=intrinsics)
 
         if use_uniform_quaternions:
@@ -676,7 +676,7 @@ class PointCloudReader:
             cad_scale {float} -- scale of CAD model
         """
 
-        self._renderer.change_object(cad_path, cad_scale)
+        self._renderer._load_object(cad_path, cad_scale)
 
     def change_scene(self, obj_paths, obj_scales, obj_transforms, visualize=False):
         """

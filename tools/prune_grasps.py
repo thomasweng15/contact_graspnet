@@ -1,3 +1,4 @@
+# Creates a new directory with pruned grasps
 import os
 import sys
 import shutil

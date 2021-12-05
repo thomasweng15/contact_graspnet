@@ -201,7 +201,7 @@ if __name__ == "__main__":
         os.makedirs(ckpt_dir, exist_ok=True)
     
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-    os.system('cp {} {}'.format(os.path.join(CONTACT_DIR, 'contact_graspnet.py'), ckpt_dir)) # bkp of model def
+    os.system('cp {} {}'.format(os.path.join(CONTACT_DIR, 'contact_graspnet_model.py'), ckpt_dir)) # bkp of model def
     os.system('cp {} {}'.format(os.path.join(CONTACT_DIR, 'train.py'), ckpt_dir)) # bkp of train procedure
 
     LOG_FOUT = open(os.path.join(ckpt_dir, 'log_train.txt'), 'w')
