@@ -1,3 +1,4 @@
 [submodule "contact_graspnet"]
 	path = contact_graspnet
 	url = https://github.com/NVlabs/contact_graspnet.git
+	branch = ngf
