@@ -17,7 +17,6 @@ import trimesh.transformations as tra
 from scipy.spatial import cKDTree
 
 import provider
-from scene_renderer import SceneRenderer
 
 def load_scene_contacts(dataset_folder, test_split_only=False, num_test=None, scene_contacts_path='scene_contacts_new'):
     """
@@ -466,6 +465,7 @@ class PointCloudReader:
         self._current_pc = None
         self._cache = {}
 
+        from scene_renderer import SceneRenderer
         self._renderer = SceneRenderer(caching=True, intrinsics=intrinsics)
 
         if use_uniform_quaternions:
